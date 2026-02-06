@@ -63,6 +63,13 @@ class App {
         false;
   }
 
+  Future<bool> openFile(String path) async {
+    return await methodChannel.invokeMethod<bool>("openFile", {
+          "path": path,
+        }) ??
+        false;
+  }
+
   Future<ImageProvider?> getPackageIcon(String packageName) async {
     final path = await methodChannel.invokeMethod<String>('getPackageIcon', {
       'packageName': packageName,
